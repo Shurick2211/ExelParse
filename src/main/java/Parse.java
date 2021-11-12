@@ -36,14 +36,24 @@ public class Parse {
         Document pageKr=getPage(url);
         Elements krTablo=pageKr.select("div [class=thumbnail]");
         Element element=krTablo.select("a").first();
-        return element.attr("href");
+        String text;
+        try {
+             text=element.attr("href");
+        }catch (Exception e){System.out.println("oro"); text="fff";}
+
+
+        if(text.equals(null))text="";
+        return text;
 
     }
     public static String orikoText(String url) throws IOException {
        // String urlKr="https://orico-russia.ru/storage/korpusa-dlja-vneshnix-diskov/orico-msa-u3-sv";
         Document pageKr=getPage(url);
         Elements krTablo=pageKr.select("div [id=tab-description]");
-        String text=krTablo.text();
+        String text;
+        try {
+        text=krTablo.text();
+        }catch (Exception e){System.out.println("oro"); text="fff";}
         if(text.equals(null))text="";
         return text;
     }

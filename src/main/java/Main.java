@@ -92,9 +92,9 @@ public class Main {
                     r.getCell(12).setCellValue(
                             Parse.orikoImLink(r.getCell(14).getStringCellValue()));
                 // if(r.getCell(13).equals(""))
-                r.getCell(13).setCellValue(
+               r.getCell(13).setCellValue(
                         Parse.orikoText(r.getCell(14).getStringCellValue()));
-
+System.out.println(r.getRowNum());
                 rowsRez.add(r);
             }
         }

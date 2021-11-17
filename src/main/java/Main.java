@@ -12,6 +12,9 @@ public class Main {
 
     public static void main(String []args) throws IOException {
 
+        LinkParse.mainLink();
+
+
         XSSFSheet sheet=FilesWork.openWorkbook("1.xlsx").getSheet("Список товаров");
         Iterator<Row> rowIt =sheet.iterator();
         // rowsRez.add(sheet.getRow(0));
@@ -43,7 +46,7 @@ public class Main {
         }
 
 */
-        System.out.println("All="+rows.size());
+      //  System.out.println("All="+rows.size());
        // System.out.println("ааа="+rows2.size());
        // System.out.println("Уникальных="+rowsRez.size());
        // System.out.println("Количество повторов="+rowsDobl.size());
@@ -83,6 +86,7 @@ public class Main {
         FilesWork.saveWorkbook("rez.xlsx", (ArrayList<Row>) rowsRez);
     }
 
+
     private static void addImText() throws IOException {
 
 
@@ -90,16 +94,16 @@ public class Main {
             if (!r.getCell(14).getStringCellValue().equals("")) {
                 //if (r.getCell(12).equals(""))
                     r.getCell(12).setCellValue(
-                            Parse.orikoImLink(r.getCell(14).getStringCellValue()));
+                            Parse.orikoImLinkImg(r.getCell(14).getStringCellValue())[0]);
                 // if(r.getCell(13).equals(""))
                r.getCell(13).setCellValue(
-                        Parse.orikoText(r.getCell(14).getStringCellValue()));
+                        Parse.orikoImLinkImg(r.getCell(14).getStringCellValue())[1]);
 System.out.println(r.getRowNum());
                 rowsRez.add(r);
             }
         }
 
-        FilesWork.saveWorkbook("rez.xlsx", (ArrayList<Row>) rowsRez);
+        FilesWork.saveWorkbook("rez.xlsx",  rowsRez);
     }
 
 
